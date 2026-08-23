@@ -106,7 +106,7 @@ export default function AboutPage() {
                 association offers a place to encounter Jesus, grow in community,
                 and discover purpose. You are welcome here.&rdquo;
               </blockquote>
-              <p className="mt-6 font-semibold">— Pastor [Name], MUSDAA Chaplain</p>
+              <p className="mt-6 font-semibold">— Pastor Mwebesa Theo, MUSDAA Chaplain</p>
             </div>
           </div>
         </div>
