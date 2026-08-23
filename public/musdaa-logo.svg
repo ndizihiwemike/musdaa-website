@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 190" role="img" aria-labelledby="title desc">
+  <title id="title">Makerere University Seventh-day Adventist Association</title>
+  <desc id="desc">MUSDAA logo with a cross, stars, open book and association wordmark.</desc>
+  <g fill="none" stroke="#0c5c4d" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke-width="10" d="M28 142 67 55l76-2 28 26-26 62-54 2-29 24Z"/>
+    <path stroke-width="6" d="m29 142 47-18 42 15 53-60"/>
+    <path stroke-width="8" d="M112 19v61M94 39h36"/>
+    <path fill="#d5ab28" stroke="#d5ab28" stroke-width="2" d="m112 5 4 12 13 1-10 8 3 13-10-7-11 7 4-13-11-8 14-1Z"/>
+    <path fill="#d5ab28" stroke="#d5ab28" stroke-width="2" d="m153 57 3 9 10 1-8 6 2 10-8-5-8 5 3-10-8-6 10-1Z"/>
+    <path fill="#d5ab28" stroke="#d5ab28" stroke-width="2" d="m126 96 3 9 10 1-8 6 2 10-8-5-8 5 3-10-8-6 10-1Z"/>
+    <path fill="#0c5c4d" stroke="#0c5c4d" stroke-width="2" d="M83 75c16-5 27-17 29-31 9 15 5 31-12 42Z"/>
+  </g>
+  <path fill="#d5ab28" d="M174 25h4v110h-4z"/>
+  <g fill="#202020" font-family="Arial, Helvetica, sans-serif">
+    <text x="201" y="67" font-size="29" font-weight="700">MAKERERE</text>
+    <text x="201" y="101" font-size="29" font-weight="700">UNIVERSITY</text>
+    <text x="203" y="126" font-size="14" letter-spacing="2">SEVENTH-DAY ADVENTIST</text>
+    <text x="203" y="146" font-size="14" letter-spacing="4">ASSOCIATION</text>
+  </g>
+</svg>
