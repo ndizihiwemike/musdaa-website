@@ -14,9 +14,7 @@ export default function Footer() {
               <Image src={logo} alt="MUSDAA" className="h-16 w-auto rounded bg-white p-1" />
             </div>
             <p className="text-sm text-blue-200 leading-relaxed">
-              Makerere University Seventh-day Adventist Association — nurturing
-              spiritual growth, Christian fellowship, and mission among students
-              and the wider community.
+              Makerere University Seventh-day Adventist Association <br /> WE ARE HIS HANDS
             </p>
           </div>
 
