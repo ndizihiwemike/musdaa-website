@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import logo from "@/image.png";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +32,11 @@ export const metadata: Metadata = {
     "Christian Fellowship",
   ],
   authors: [{ name: "MUSDAA" }],
+  icons: {
+    icon: logo.src,
+    shortcut: logo.src,
+    apple: logo.src,
+  },
   openGraph: {
     type: "website",
     locale: "en_UG",
