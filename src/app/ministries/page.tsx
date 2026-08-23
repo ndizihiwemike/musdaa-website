@@ -11,6 +11,8 @@ export const metadata: Metadata = {
     "Explore the various ministries and projects of MUSDAA — Youth, Music, Outreach, Health, Prayer, and more.",
 };
 
+  export const dynamic = "force-static";
+
 export default async function MinistriesPage() {
   let items: Ministry[] = placeholderMinistries;
 

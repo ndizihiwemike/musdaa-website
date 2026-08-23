@@ -7,6 +7,10 @@ export const metadata = {
   robots: { index: false, follow: false },
 };
 
+export function generateStaticParams() {
+  return [];
+}
+
 export default async function EditEventPage({
   params,
 }: {

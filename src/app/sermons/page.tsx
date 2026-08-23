@@ -11,6 +11,8 @@ export const metadata: Metadata = {
     "Watch and listen to recent sermons from MUSDAA worship services. Grow in the Word anytime, anywhere.",
 };
 
+  export const dynamic = "force-static";
+
 export default async function SermonsPage() {
   let sermons: Sermon[] = recentSermons;
 

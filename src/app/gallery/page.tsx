@@ -9,13 +9,28 @@ export const metadata: Metadata = {
     "Photos from MUSDAA events, programs, and community life plus useful resources.",
 };
 
+export const dynamic = "force-static";
+
 export default async function GalleryPage() {
-  const supabase = await createClient();
-  const { data: galleryItems } = await supabase
-    .from("gallery_items")
-    .select("id, title, image_url, category, event_date")
-    .eq("is_published", true)
-    .order("created_at", { ascending: false });
+  let galleryItems: {
+    id: string;
+    title: string | null;
+    image_url: string;
+    category: string | null;
+    event_date: string | null;
+  }[] | null = null;
+
+  try {
+    const supabase = await createClient();
+    const { data } = await supabase
+      .from("gallery_items")
+      .select("id, title, image_url, category, event_date")
+      .eq("is_published", true)
+      .order("created_at", { ascending: false });
+    galleryItems = data;
+  } catch {
+    // Use the built-in placeholders when Supabase is unavailable.
+  }
 
   return (
     <div className="bg-white">

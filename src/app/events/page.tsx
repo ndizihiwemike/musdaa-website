@@ -11,6 +11,8 @@ export const metadata: Metadata = {
     "Stay up to date with MUSDAA worship services, youth programs, outreach, and special events at Makerere University.",
 };
 
+  export const dynamic = "force-static";
+
 export default async function EventsPage() {
   let events: Event[] = featuredEvents;
 

@@ -12,6 +12,8 @@ export const metadata: Metadata = {
     "Weekly programs, order of service, and announcements from MUSDAA.",
 };
 
+  export const dynamic = "force-static";
+
 export default async function ProgramsPage() {
   let announcements: Announcement[] = placeholderAnnouncements;
 
