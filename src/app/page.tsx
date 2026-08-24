@@ -4,13 +4,60 @@ import Hero from "@/components/Hero";
 import SectionHeading from "@/components/SectionHeading";
 import EventCard from "@/components/EventCard";
 import SermonCard from "@/components/SermonCard";
+import { createClient } from "@/lib/supabase/server";
+import type { Announcement, Event, Sermon } from "@/types";
 import {
   featuredEvents,
   recentSermons,
   announcements,
 } from "@/data/placeholder";
 
-export default function HomePage() {
+export const dynamic = "force-static";
+
+export default async function HomePage() {
+  let currentEvents: Event[] = featuredEvents;
+  let currentAnnouncements: Announcement[] = announcements;
+  let currentSermons: Sermon[] = recentSermons;
+
+  try {
+    const supabase = await createClient();
+    const today = new Date().toISOString().slice(0, 10);
+    const [eventsResult, announcementsResult, sermonsResult] = await Promise.all([
+      supabase
+        .from("events")
+        .select("*")
+        .eq("is_published", true)
+        .gte("date", today)
+        .order("date", { ascending: true })
+        .limit(3),
+      supabase
+        .from("announcements")
+        .select("*")
+        .eq("is_published", true)
+        .order("is_pinned", { ascending: false })
+        .order("date", { ascending: false })
+        .limit(3),
+      supabase
+        .from("sermons")
+        .select("*")
+        .eq("is_published", true)
+        .order("date", { ascending: false })
+        .limit(3),
+    ]);
+
+    if (!eventsResult.error && eventsResult.data?.length) {
+      currentEvents = eventsResult.data;
+    }
+    if (!announcementsResult.error && announcementsResult.data?.length) {
+      currentAnnouncements = announcementsResult.data;
+    }
+    if (!sermonsResult.error && sermonsResult.data?.length) {
+      currentSermons = sermonsResult.data;
+    }
+  } catch {
+    // Fall back to placeholder data when Supabase is unavailable.
+  }
+
   return (
     <>
       <Hero />
@@ -67,7 +114,7 @@ export default function HomePage() {
       </section>
 
       {/* Announcements */}
-      {announcements.length > 0 && (
+      {currentAnnouncements.length > 0 && (
         <section className="bg-amber-50 border-y border-amber-100 py-10">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
@@ -82,7 +129,7 @@ export default function HomePage() {
               </Link>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
-              {announcements.map((a) => (
+              {currentAnnouncements.map((a) => (
                 <div
                   key={a.id}
                   className="rounded-xl bg-white border border-amber-100 p-5 shadow-sm"
@@ -121,7 +168,7 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {featuredEvents.map((event) => (
+            {currentEvents.map((event) => (
               <EventCard key={event.id} event={event} />
             ))}
           </div>
@@ -146,7 +193,7 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {recentSermons.map((sermon) => (
+            {currentSermons.map((sermon) => (
               <SermonCard key={sermon.id} sermon={sermon} />
             ))}
           </div>
